@@ -2,8 +2,23 @@ class UsersController < ApplicationController
   def index
     matching_users =  User.all
 
-    @list_of_users = matching_users.order({ :username => :asc})
+    @list_of_users = matching_users.order({ :username => :asc })
     
-    render({ :template => "user_templates/index"})
+    render({ :template => "user_templates/index" })
+  end
+
+  def show
+    # Parameters: {"path_username"=>"anisa"}
+    url_username = params.fetch("path_username")
+
+    matching_usernames = User.where({ :username => url_username}).at(0)
+
+    @the_user = matching_usernames
+
+    if @the_user == nil
+        redirect_to("/404")
+    else 
+    render({ :template => "user_templates/show" })
+    end
   end
 end
