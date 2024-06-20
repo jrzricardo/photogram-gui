@@ -17,13 +17,13 @@
 
 <dt>Edit photo</dt>
 <dd>
-  <form action="/photos/<%= a_photo.id %>" method="post">
-
+  <form action="/update_photo" method="post">
+    <input type="hidden" name="query_photo_id" value=<%= a_photo.id %>>
     <label for="browser_image">Image</label>
-    <input type="text" id="browser_image" name="image" placeholder="Enter a URL for the image..." value="<%= a_photo.image %>">
+    <input type="text" id="browser_image" name="query_image" placeholder="Enter a URL for the image..." value="<%= a_photo.image %>">
 
     <label for="browser_caption">Caption</label>
-    <textarea name="caption" id="browser_caption" type="text" placeholder="Enter a caption for the photo..." "><%= a_photo.caption %></textarea>
+    <textarea name="query_caption" id="browser_caption" type="text" placeholder="Enter a caption for the photo..." "><%= a_photo.caption %></textarea>
 
     <button>Update photo</button>
   </form>

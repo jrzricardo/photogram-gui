@@ -20,4 +20,37 @@ class PhotosController < ApplicationController
     the_photo.destroy
     redirect_to("/photos")
   end
+
+  def create
+    # Parameters: {"query_image"=>"", "query_caption"=>"", "query_owner_id"=>""}
+    input_image = params.fetch("query_image")
+    input_caption = params.fetch("query_caption")
+    input_owner_id = params.fetch("query_owner_id")
+    
+    a_new_photo = Photo.new
+
+    a_new_photo.image = input_image
+    a_new_photo.caption = input_caption
+    a_new_photo.owner_id = input_owner_id
+
+    a_new_photo.save
+    
+   redirect_to("/photos/#{a_new_photo.id.to_s}")
+  end
+
+  def update
+    # Parameters: {"query_image"=>"https://robohash.org/errorexpeditacum.png?size=300x300&set=set1", "query_caption"=>"kirbo", "query_owner_id"=>"117"}
+  
+    new_image = params.fetch("query_image")
+    new_caption = params.fetch("query_caption")
+
+    the_id = params.fetch("query_photo_id")
+    alter_photo = Photo.where({ :id => the_id}).at(0)
+    alter_photo.image = new_image
+    alter_photo.caption = new_caption
+
+    alter_photo.save
+
+   redirect_to("/photos/#{alter_photo.id.to_s}")
+  end
 end

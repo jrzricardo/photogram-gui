@@ -1,4 +1,19 @@
 <h1>List of photos</h1>
+
+<form action="/insert_photo/" method="get">
+
+<label for="browser_image">Image</label>
+<input type="text" id="browser_image" name="query_image" placeholder="Enter a URL for the image...">
+
+<label for="browser_caption">Caption</label>
+<textarea name="query_caption" id="browser_caption" type="text" placeholder="Enter and ID of a User"></textarea>
+
+<label for="browser_owner">Owner ID</label>
+<input type="text" id="browser_owner" name="query_owner_id" placeholder="Enter an ID of a User">
+
+<button>Add photo</button>
+
+</form>
 <table border = 1>
   <tr>
   <th>Image</th>
