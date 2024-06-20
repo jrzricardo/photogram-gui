@@ -12,4 +12,12 @@ class PhotosController < ApplicationController
     @the_photo = @matching_photo.at(0)
     render({ :template => "photo_templates/show"})
   end
+
+  def destroy
+    the_id = params.fetch("scrapped_id")
+    matching_photos = Photo.where({ :id => the_id })
+    the_photo = matching_photos.at(0)
+    the_photo.destroy
+    redirect_to("/photos")
+  end
 end
