@@ -6,10 +6,13 @@
 <dd><%= @the_user.id %></dd>
 <dt>Edit user</dt>
 <dd>
-  <form action="/users/<%= @the_user.username %>" method="post">
-    <label for="edit">Username</label>
-    <input type="text" id="edit" name="edit">
-    <button form="edit">Update user</button>
+  <form action="/update_user/" method="post">
+    <input type="hidden" id="browser_user_id" name="query_user_id" value="<%= @the_user.id %>">
+
+    <label for="browser_edit">Username</label>
+    <input type="text" id="browser_edit" name="query_edit_user">
+
+    <button>Update user</button>
   </form>
 </dd>
 </dl>

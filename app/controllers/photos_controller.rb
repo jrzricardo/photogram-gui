@@ -53,4 +53,7 @@ class PhotosController < ApplicationController
 
    redirect_to("/photos/#{alter_photo.id.to_s}")
   end
+
+
+  
 end

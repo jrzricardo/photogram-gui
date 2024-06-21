@@ -56,16 +56,16 @@
 </table>
 
 <h3>Add a new comment</h3>
-<form action="/add_comment" mothed="post">
+<form action="/add_comment/" method="post">
 
   <label for="browser_photo_id">Photo ID</label>
-  <input type="text" id="browser_photo_id" name="photo_id" placeholder="Enter the photo ID" value=<%= @the_photo.id %>>
+  <input type="text" id="browser_photo_id" name="query_photo_id" placeholder="Enter the photo ID" value=<%= @the_photo.id %>>
 
   <label for="browser_author_id">Author ID</label>
-  <input type="text" id="browser_author_id" name="author_id" placeholder="Enter your author ID"]>
+  <input type="text" id="browser_author_id" name="query_author_id" placeholder="Enter your author ID"]>
 
   <label for="browser_comment">Comment</label>
-  <textarea name="comment" id="browser_comment" type="text" placeholder="Enter a comment..."></textarea>
+  <textarea name="query_comment" id="browser_comment" type="text" placeholder="Enter a comment..."></textarea>
 
   <button>Add comment</button>
 </form>
