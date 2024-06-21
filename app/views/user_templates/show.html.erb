@@ -7,10 +7,10 @@
 <dt>Edit user</dt>
 <dd>
   <form action="/update_user/" method="post">
-    <input type="hidden" id="browser_user_id" name="query_user_id" value="<%= @the_user.id %>">
+    <input type="hidden" id="browser_user_id" name="query_user_id"  value="<%= @the_user.id %>">
 
     <label for="browser_edit">Username</label>
-    <input type="text" id="browser_edit" name="query_edit_user">
+    <input type="text" id="browser_edit" name="query_edit_user" value="<%= @the_user.username %>">
 
     <button>Update user</button>
   </form>
@@ -30,7 +30,7 @@
 
  <% @the_user.own_photos.each do | a_photo | %>
   <tr>
-    <td><image src="<%= a_photo.image %>"></td>
+    <td><img src="<%= a_photo.image %>"></td>
     <td><%= a_photo.poster.username %></td>
     <td><%= a_photo.caption %></td>
     <td><%= a_photo.created_at %></td>

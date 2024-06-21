@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def home
+    redirect_to("/users")
+  end
 
   def update
     altered_username = params.fetch("query_edit_user")
@@ -9,9 +12,11 @@ class UsersController < ApplicationController
     
     alt_user.save
 
+
+  
    redirect_to("/users/#{alt_user.username}")
   end
-  
+
   def index
     matching_users =  User.all
 
@@ -22,7 +27,7 @@ class UsersController < ApplicationController
 
   def show
     # Parameters: {"path_username"=>"anisa"}
-    url_username = params.fetch("path_username")
+    url_username = params.fetch("username")
 
     matching_usernames = User.where({ :username => url_username}).at(0)
 
@@ -35,12 +40,16 @@ class UsersController < ApplicationController
     end
   end
 
-  def add
-      the_username = params.fetch("query_new_user")
-      new_user = User.new
-      
-      new_user.username = the_username
-      new_user.save
-    redirect_to("/users/#{the_username}")
+  def create
+    @new_user = User.new
+    @new_user.username = params.fetch("query_username")
+
+      if @new_user.valid?
+        @new_user.save
+        @username = @new_user.username
+        redirect_to("/users/#{@username}")
+      else 
+        redirect_to("/users")
+      end
   end
 end

@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+get("/", { :controller => "users", :action => "home" })
+
+
 # User Routes
 # ------------------------------------------------------------------------------------------------------
   get("/users", { :controller => "users", :action => "index" })
-  get("users/:path_username", { :controller => "users", :action => "show"})
-  post("/add_user", { :controller => "users", :action => "add"})
+  get("users/:username", { :controller => "users", :action => "show"})
+  post("/add_user", { :controller => "users", :action => "create"})
   post("/update_user", { :controller => "users", :action => "update"})
 
 # Photo Routes
